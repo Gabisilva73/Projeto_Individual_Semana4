@@ -1,0 +1,62 @@
+<!DOCTYPE html> <!-- Declaração do tipo de documento HTML -->
+
+<html lang="en"> <!-- Início do elemento HTML com atributo de idioma "en" (inglês) -->
+
+<head>
+    <meta charset="UTF-8"> <!-- Configuração do conjunto de caracteres para UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Configuração da viewport para dispositivos móveis -->
+    <title>Projeto individual</title> <!-- Título da página exibido na aba do navegador -->
+
+    <style>
+        body {
+            margin-top: 1px;
+            padding: 0;
+        }
+
+        canvas {
+            border: 1px solid #000000
+        }
+    </style> <!-- Estilos CSS internos para centralizar o conteúdo na página -->
+
+    <script src="phaser.js"></script> <!-- Inclusão da biblioteca Phaser para jogos -->
+    <script src="Scenes/inicio.js"></script> <!-- Inclusão do script do jogo  -->
+    <script src="Scenes/game.js"></script> <!-- Inclusão do script do jogo  -->
+
+</head>
+
+<body>
+    <div id="game"></div>
+
+    <script type="text/javascript">
+        /*Global variables definition*/
+        const config = {
+            type: Phaser.AUTO,
+            scale: {
+                mode: Phaser.Scale.FIT
+            },
+            autoCenter: Phaser.Scale.CENTER,
+            width: 700, //largura da tela do jogo
+            height: 600, //altura da tela do jogo
+            backgroundColor: '#39addd',
+            physics: {
+                default: 'arcade',
+                arcade: {
+                    gravity: { y: 10 }, //definindo a gravidade
+                    debug: false
+                }
+            },
+            parent: "game",
+            dom:{
+               createContainer: true,
+            },
+            scene: [Inicio, Game]
+        };
+        
+        var game = new Phaser.Game(config);
+        game.scene.start('Inicio');
+    </script>
+
+</body>
+
+</html>
